@@ -14,4 +14,16 @@ The application repositories remain private, so this is not a source leak. It is
 
 **Options when revisited:** trim `database-generated.d.ts` and unreleased entries from `platform.js`; move to a restricted npm scope; or split public/private packages.
 
+## Packaging patches (August 2026)
+
+README, `UNLICENSED`, author email and homepage/bugs/repository links now point at this showcase. Those commits are on each package's `main`:
+
+| Package | Git | Registry (still) |
+| --- | --- | --- |
+| `@koloseum/types` | 0.4.4 | 0.4.3 |
+| `@koloseum/utils` | 0.3.16 | 0.3.15 |
+| `@koloseum/components` | 0.2.3 | 0.2.2 |
+
+Publication needs a fresh `npm login`; the local npm token returns 401. Until then, `npm view` will show the previous versions.
+
 Author: Davy Kamanzi, August 2026.
