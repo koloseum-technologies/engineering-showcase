@@ -1,6 +1,6 @@
-# End-to-end testing strategy
+# E2E testing strategy
 
-Koloseum's completed services are not just unit-tested UI; they have E2E (Playwright) suites that log in as real roles against a seeded local Supabase instance and click through established workflows.
+Koloseum's completed microservices have full test suites that include unit tests (Vitest) that primarily target helper functions and E2E tests (Playwright) that log in as real roles against a seeded local Supabase instance and click through established workflows.
 
 ## Stack
 
