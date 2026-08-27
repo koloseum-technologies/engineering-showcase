@@ -25,7 +25,7 @@ Eleven non-template microservices (SvelteKit, TypeScript) on a shared PostgreSQL
 
 **Testing:** Playwright E2E across the completed services, Vitest at the app and package layers, Snaplet-driven deterministic seeds.
 
-**Production (qualified):** `public-auth` ran from March to October 2025. 83 phone sign-ups produced 54 completed Player registrations (65%) through an age-gated flow with Smile ID. Excluding three internal Backroom accounts: 51 of 80 external sign-ups completed (64%). One Lounge company account registered and created a branch. The the application is not currently serving traffic, but the production database is still live. See [`product/status.md`](product/status.md) for more info.
+**Production:** `public-auth` ran from Q1 to Q4 2025. 83 phone sign-ups produced 54 completed Player registrations (65%) through an age-gated flow with Smile ID. Excluding three internal Backroom accounts: 51 of 80 external sign-ups completed (64%). One Lounge company account registered and created a branch. The application is not currently serving traffic, but the production database is still live. See [`product/status.md`](product/status.md) for more details.
 
 ## How it is engineered
 
