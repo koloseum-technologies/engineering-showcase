@@ -4,20 +4,20 @@ Koloseum is an **unreleased MVP**. The Players Competitions microservice is the 
 
 ## Implementation
 
-| Service               | Current version | Status                                                   |
-| --------------------- | --------------- | -------------------------------------------------------- |
-| Public Authentication | _v0.4.1_        | **Shipped to production; not currently serving traffic** |
-| Players Competitions  | N/A             | In active development                                    |
-| Players Sessions      | _v0.2.2_        | **Completed**                                            |
-| Players Account       | N/A             | Backlog                                                  |
-| Lounges Operations    | _v0.1.1_        | **Completed**                                            |
-| Lounges Staff         | _v0.1.0_        | **Completed**                                            |
-| Lounges Account       | _v0.1.1_        | **Completed**                                            |
-| Backroom Compliance   | _v0.1.14_       | Backlog (shipped; awaiting MVP updates)                  |
-| Backroom Staff        | N/A             | Backlog                                                  |
-| Public Legal          | _v0.1.3_        | Backlog (shipped; awaiting MVP updates)                  |
-| Public Help           | N/A             | Backlog                                                  |
-| Public Landing        | N/A             | Backlog                                                  |
+| Service                  | Current version | Status                                  |
+| ------------------------ | --------------- | --------------------------------------- |
+| Public Authentication    | _v0.4.1_        | Shipped; not currently serving traffic  |
+| **Players Competitions** | N/A             | **In active development**               |
+| Players Sessions         | _v0.2.2_        | Completed                               |
+| Players Account          | N/A             | Backlog                                 |
+| Lounges Operations       | _v0.1.1_        | Completed                               |
+| Lounges Staff            | _v0.1.0_        | Completed                               |
+| Lounges Account          | _v0.1.1_        | Completed                               |
+| Backroom Compliance      | _v0.1.14_       | Backlog (shipped; awaiting MVP updates) |
+| Backroom Staff           | N/A             | Backlog                                 |
+| Public Legal             | _v0.1.3_        | Backlog (shipped; awaiting MVP updates) |
+| Public Help              | N/A             | Backlog                                 |
+| Public Landing           | N/A             | Backlog                                 |
 
 ## Production funnel
 
