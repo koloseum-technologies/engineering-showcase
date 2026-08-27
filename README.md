@@ -6,7 +6,7 @@ This repository is the public engineering record, while source code remains priv
 
 ## Author
 
-- **Davy Kamanzi** – Head of Technology and Community Relations, Ace Pro Sports Technologies | [@DavyK17](https://github.com/DavyK17)
+- **Davy Kamanzi** | [@DavyK17](https://github.com/DavyK17) – Head of Technology and Community Relations, Ace Pro Sports Technologies
 
 ## What has been built
 
