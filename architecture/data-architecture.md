@@ -1,42 +1,34 @@
 # Data architecture
 
-This is the strongest engineering asset in the estate. The product is a competition platform with a financial ledger, not a CRUD app with a database bolted on. Rules that can be enforced in PostgreSQL are enforced there.
+The database is the strongest engineering asset on the platform. Rules and constraints are primarily enforced there rather than being re-implemented on the frontend.
 
 ## Size (declarative schema under `supabase/schemas/`)
 
-| Measure | Count |
-| --- | --- |
-| Lines of SQL | 31,024 across six schema files |
-| Tables | 145, six PostgreSQL schemas, **RLS on all 145** |
-| RLS policies | 351 |
-| PL/pgSQL functions | 390 |
-| Triggers | 202 |
-| Indexes | 299 |
-| Named CHECK constraints | 183 |
-| Enum types | 45 |
+| Measure                 | Count                                   |
+| ----------------------- | --------------------------------------- |
+| Lines of SQL            | 31,024 across six schema files          |
+| Tables                  | 145, six PostgreSQL schemas, RLS on all |
+| RLS policies            | 351                                     |
+| PL/pgSQL functions      | 390                                     |
+| Triggers                | 202                                     |
+| Indexes                 | 299                                     |
+| Named CHECK constraints | 183                                     |
+| Enum types              | 45                                      |
 
-PostgreSQL 17. Extensions in use: `pg_net`, `pg_cron`, `btree_gist`, `pgcrypto`, `supabase_vault`.
-
-One GiST **exclusion constraint** prevents overlapping special-event windows on the same Lounge branch (`sessions` schema). That is a constraint the application cannot reasonably police with SELECT-then-INSERT.
-
-Amounts are **integers in cents**. Default timezone is **`Africa/Nairobi`**; session `TimeZone` must not contradict it.
+Since our backend is managed on Supabase, the database runs on PostgreSQL 17, with extensions in use including `pg_net`, `pg_cron`, `btree_gist`, `pgcrypto`, and `supabase_vault`. All amounts are recorded as integers in cents and the default timezone is `Africa/Nairobi`.
 
 ## Where the rules live
 
-Examples of business rules that are database-enforced rather than re-implemented in SvelteKit:
+Examples of business rules that are database-enforced:
 
-- Rolling 24-hour Credits top-up limits in cents (`compliance`)
-- “Regular” status: four distinct weeks of ≥ 60-minute sessions at any of a Lounge's branches (`sessions`)
+- Rolling 24-hour top-up limits for Koloseum Credits
+- Lounge "regular" status: four distinct weeks of ≥ 60-minute sessions at any of a Lounge's branches
 - Session lifecycle state machine, including a block on checkout while eatery orders are open
-- Double-entry prize-money → Credits conversion
+- Conversion of prize money from competitions to Koloseum Credits
 - Auto top-up firing through `pg_net` into an Edge Function, with secrets read from Vault
 
-The application layer still does workflows, retries, user-facing errors and calls to providers that are not trigger-driven. It does not get a second chance to invent a top-up limit.
-
-## Readable public proof
-
-[`DavyK17/man-of-substance`](https://github.com/DavyK17/man-of-substance) is a small instance of the same idea: contributor tiers computed in a SQL view, RLS on every table, a Storage policy that scopes `mp4/<id>.mp4` to `auth.uid()`, and `parsePostgrestError` mapping `P0001` (PL/pgSQL `RAISE`) to HTTP 400 so a database-raised rule surfaces as a client error. Koloseum industrialises that pattern across 390 functions.
+The app layer still handles workflows, retries, user-facing errors, and calls to providers that are not trigger-driven. It does not get a second chance to invent a top-up limit.
 
 ## Caching
 
-Selected services put high-frequency reads in Valkey. Keys are tenant-scoped, TTLs are per data class, mutations invalidate by pattern, and a cache miss is never an application failure. Some paths still rely on TTL expiry rather than event-driven invalidation; that is recorded in [`product/limitations.md`](../product/limitations.md).
+Selected services put high-frequency reads in Valkey. Keys are tenant-scoped, TTLs are categorised by data class, mutations invalidate by pattern, and a cache miss is never an application failure. Some paths still rely on TTL expiry rather than event-driven invalidation; see [`product/limitations.md`](../product/limitations.md) for more info.
