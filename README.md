@@ -23,7 +23,9 @@ Eleven non-template microservices (SvelteKit, TypeScript) on a shared PostgreSQL
 
 **Integrations:** Paystack, Flutterwave, GavaConnect (KRA eTIMS), Smile ID, SuprSend, Twilio, Zoho, IGDB — ten Edge Functions, approx. 9,500 lines of TypeScript.
 
-**Testing:** Playwright E2E across the completed services, Vitest at the app and package layers, Snaplet-driven deterministic seeds.
+**Process (platform-wide):** 4,484 commits since 22 March 2024 · 157 merged pull requests · 200 release tags · three shared npm packages with continuous public releases since February 2025.
+
+**Testing:** 41 end-to-end (Playwright) spec files across the completed services; 257 unit test cases in `@koloseum/utils`; Vitest at the app and package layers; deterministic seeding with Snaplet (supported by a helper library of 1,400+ lines).
 
 **Production:** `public-auth` ran from Q1 to Q4 2025. 83 phone sign-ups produced 54 completed Player registrations (65%) through an age-gated flow with Smile ID. Excluding three internal Backroom accounts: 51 of 80 external sign-ups completed (64%). One Lounge company account registered and created a branch. The application is not currently serving traffic, but the production database is still live. See [`product/status.md`](product/status.md) for more details.
 
